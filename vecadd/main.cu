@@ -87,7 +87,7 @@ int main(int argc, char**argv) {
     //INSERT CODE HERE
 
     dim3 num_threads(HILOS);
-    dim3 num_blocks(ceil( float(n) / num_threads));
+    dim3 num_blocks(ceil( float(n) / HILOS));
 
     vecAddKernel<<<num_blocks, num_threads>>>(A_d, B_d, C_d,n);
 
