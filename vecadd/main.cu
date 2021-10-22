@@ -59,9 +59,9 @@ int main(int argc, char**argv) {
     size_t size = sizeof(float)*n;
 
     float* A_d, B_d, C_d;
-    cudaMalloc((void**)&A_d, size);
-    cudaMalloc((void**)&B_d, size);
-    cudaMalloc((void**)&C_d, size);
+    cudaMalloc((float**)&A_d, size);
+    cudaMalloc((float**)&B_d, size);
+    cudaMalloc((float**)&C_d, size);
 
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
