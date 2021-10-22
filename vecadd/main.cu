@@ -88,7 +88,7 @@ int main(int argc, char**argv) {
     int num_threads = HILOS;
     int num_blocks = ceil( float(n) / num_threads);
 
-    vecAddKernel<<<num_blocks, num_threads>>>(A_d, B_d, C_d);
+    vecAddKernel<<<num_blocks, num_threads>>>(A_d, B_d, C_d,n);
 
     cuda_ret = cudaDeviceSynchronize();
     if(cuda_ret != cudaSuccess) FATAL("Unable to launch kernel");
