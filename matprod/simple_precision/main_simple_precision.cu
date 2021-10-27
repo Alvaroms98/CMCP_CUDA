@@ -102,7 +102,7 @@ int main(int argc, char**argv) {
     dim3 num_threads(HILOS, HILOS);
     dim3 num_blocks(ceil( float(n) / num_threads.x),ceil( float(n) / num_threads.y));
 
-    vecAddKernelShared1<<<num_blocks, num_threads>>>(A_d, B_d, C_d, n);
+    vecAddKernelUnshared<<<num_blocks, num_threads>>>(A_d, B_d, C_d, n);
 
     cuda_ret = cudaDeviceSynchronize();
     if(cuda_ret != cudaSuccess) FATAL("Unable to launch kernel");
