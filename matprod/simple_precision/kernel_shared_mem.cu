@@ -11,7 +11,7 @@ __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
     /* Definir identificadores */
     int bx = blockIdx.x, by = blockIdx.y;
     int tx = threadIdx.x, ty = threadIdx.y;
-    int BS = blockDim.x // blockDim.x == blockDim.y
+    int BS = blockDim.x; // blockDim.x == blockDim.y
 
     /* Primer índice de las matrices de cada block (submatrices) */
 
@@ -54,6 +54,6 @@ __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
     int c = n * BS * by + BS * bx;//Primer termino desplazamiento vertical, 
     // Segundo término desplazamiento horizontal
 
-    
+
     C[c + n * ty + tx] = Csub;
 }
