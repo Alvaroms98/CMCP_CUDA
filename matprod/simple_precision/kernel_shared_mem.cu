@@ -6,7 +6,7 @@
  *cr
  ******************************************************************************/
 
- #define HILOS 64
+#define HILOS 64
 
 __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
 
