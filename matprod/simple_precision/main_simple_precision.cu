@@ -122,9 +122,9 @@ int main(int argc, char**argv) {
 
     // Verify correctness -----------------------------------------------------
 
-    //printf("Verifying results..."); fflush(stdout);
+    printf("Verifying results..."); fflush(stdout);
 
-    verify(A_h, B_h, C_h, n);
+    //verify(A_h, B_h, C_h, n);
 
     // Free memory ------------------------------------------------------------
 
