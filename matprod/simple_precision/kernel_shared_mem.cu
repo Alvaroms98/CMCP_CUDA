@@ -42,7 +42,7 @@ __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
             tiene que iterar otro bucle anidado para recorrer la fila
             y columna correspondiente de cada submatriz, para que cada hilo
             realice el producto matricial que le corresponde */
-        for (int k = 0, k < BS; k++)
+        for (int k = 0; k < BS; k++)
         {
             Csub += As[ty][k] * Bs[k][tx];
         }
