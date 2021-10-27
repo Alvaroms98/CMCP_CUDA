@@ -31,8 +31,8 @@ __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
        simultánea */
     for (int a=aBegin, b=bBegin; a<=aBegin + n - 1; a+=BS, b+=BS*n)
     {
-        __shared__ float Asub[BS][BS];
-        __shared__ float Bsub[BS][BS];
+        __shared__ float Asub[HILOS][HILOS];
+        __shared__ float Bsub[HILOS][HILOS];
         // As[ty][tx] posición local de cada hilo dentro del bloque
         // las filas son las coordenadas "y" y las columnas las "x"
         Asub[ty][tx] = A[a + n * ty + tx];//n*ty+tx == i*ld + j
