@@ -23,6 +23,7 @@ __global__ void vecAddKernelUnshared(float* A, float* B, float* C, int n) {
             Csub += A[i*n + k] * B[k*n + j]; 
         }
         C[i*n+j] = Csub;
+        printf("%f\n",C[i*n+j]);
     }
 }
 
