@@ -6,7 +6,7 @@
  *cr
  ******************************************************************************/
 
-__global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
+__global__ void vecAddKernelShared1(float* A, float* B, float* C, int n) {
 
     /* Definir identificadores */
     int bx = blockIdx.x, by = blockIdx.y;
