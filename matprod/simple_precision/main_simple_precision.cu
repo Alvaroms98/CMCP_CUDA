@@ -117,7 +117,7 @@ int main(int argc, char**argv) {
     //INSERT CODE HERE
 
     cudaMemcpy(C_h, C_d, size, cudaMemcpyDeviceToHost);
-    printf("Elemento 10,10: %f\n",C_h[10*n+10];)
+    printf("Elemento 10,10: %f\n",C_h[10*n+10]);
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
 
