@@ -10,7 +10,8 @@
 #include <cuda_runtime.h>
 #include <math.h>
 #include "support.h"
-#include "kernel.cu"
+#include "kernel_shared_mem.cu"
+#include "kernel_unshared_mem.cu"
 
 
 #define HILOS 64
@@ -102,7 +103,7 @@ int main(int argc, char**argv) {
     dim3 num_threads(HILOS, HILOS);
     dim3 num_blocks(ceil( float(n) / num_threads.x),ceil( float(n) / num_threads.y));
 
-    vecAddKernel<<<num_blocks, num_threads>>>(A_d, B_d, C_d,n);
+    vecAddKernelShared<<<num_blocks, num_threads>>>(A_d, B_d, C_d, n);
 
     cuda_ret = cudaDeviceSynchronize();
     if(cuda_ret != cudaSuccess) FATAL("Unable to launch kernel");

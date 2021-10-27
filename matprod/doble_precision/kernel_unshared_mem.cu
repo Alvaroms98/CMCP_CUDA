@@ -6,7 +6,7 @@
  *cr
  ******************************************************************************/
 
-__global__ void vecAddKernel(float* A, float* B, float* C, int n) {
+__global__ void vecAddKernelUnshared(float* A, float* B, float* C, int n) {
 
     // Calculate global thread index based on the block and thread indices ----
 
