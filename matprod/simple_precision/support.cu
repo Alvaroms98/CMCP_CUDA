@@ -18,14 +18,15 @@ void verify(float *A, float *B, float *C, int n) {
   float prod;
   for(int i = 0; i < n; i++) {
     for (int j=0; j < n; j++){
+      prod=0;
       for (int k=0; k < n; k++){
-        prod = A[i*n+k] * B[k*n+j];
-        float relativeError = (prod - C[i*n+j])/prod;
-        if (relativeError > relativeTolerance
-          || relativeError < -relativeTolerance) {
-          printf("TEST FAILED\n\n");
-          exit(0);
-        }
+        prod += A[i*n+k] * B[k*n+j];
+      }
+      float relativeError = (prod - C[i*n+j])/prod;
+      if (relativeError > relativeTolerance
+        || relativeError < -relativeTolerance) {
+        printf("TEST FAILED\n\n");
+        exit(0);
       }
     }
   }
