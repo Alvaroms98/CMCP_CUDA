@@ -56,4 +56,5 @@ __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
 
 
     C[c + n * ty + tx] = Csub;
+    print("%f\n",C[c + n * ty + tx]);
 }
