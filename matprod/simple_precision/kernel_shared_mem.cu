@@ -6,14 +6,12 @@
  *cr
  ******************************************************************************/
 
-#define HILOS 64
-
 __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
 
     /* Definir identificadores */
     int bx = blockIdx.x, by = blockIdx.y;
     int tx = threadIdx.x, ty = threadIdx.y;
-    int BS = blockDim.x; // blockDim.x == blockDim.y
+    __constant__ int BS = blockDim.x; // blockDim.x == blockDim.y
 
     /* Primer índice de las matrices de cada block (submatrices) */
 
@@ -31,8 +29,8 @@ __global__ void vecAddKernelShared(float* A, float* B, float* C, int n) {
        simultánea */
     for (int a=aBegin, b=bBegin; a<=aBegin + n - 1; a+=BS, b+=BS*n)
     {
-        __shared__ float Asub[HILOS][HILOS];
-        __shared__ float Bsub[HILOS][HILOS];
+        __shared__ float Asub[BS][BS];
+        __shared__ float Bsub[BS][BS];
         // As[ty][tx] posición local de cada hilo dentro del bloque
         // las filas son las coordenadas "y" y las columnas las "x"
         Asub[ty][tx] = A[a + n * ty + tx];//n*ty+tx == i*ld + j
