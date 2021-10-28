@@ -14,7 +14,7 @@ __global__ void vecAddKernelUnshared(float* A, float* B, float* C, int n) {
     int i = threadIdx.y + blockDim.y * blockIdx.y;
     int j = threadIdx.x + blockDim.x * blockIdx.x;
 
-    float Csub = 0;
+    float Csub = 0.0;
 
     /* loop que itera fila * columna de A y B respectivamente */
     if ( i < n && j < n){
@@ -23,7 +23,6 @@ __global__ void vecAddKernelUnshared(float* A, float* B, float* C, int n) {
             Csub += A[i*n + k] * B[k*n + j]; 
         }
         C[i*n+j] = Csub;
-        printf("%f\n",C[i*n+j]);
     }
 }
 
