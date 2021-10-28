@@ -18,7 +18,7 @@ void verify(float *A, float *B, float *C, int n) {
   float prod;
   for(int i = 0; i < n; i++) {
     for (int j=0; j < n; j++){
-      prod=0;
+      prod=0.0;
       for (int k=0; k < n; k++){
         prod += A[i*n+k] * B[k*n+j];
       }
