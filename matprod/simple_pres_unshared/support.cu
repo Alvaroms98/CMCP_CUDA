@@ -14,7 +14,7 @@
 
 void verify(float *A, float *B, float *C, int n) {
 
-  const float relativeTolerance = 1e-6;
+  const float relativeTolerance = 1e-3;
   float prod;
   for(int i = 0; i < n; i++) {
     for (int j=0; j < n; j++){
@@ -22,14 +22,12 @@ void verify(float *A, float *B, float *C, int n) {
       for (int k=0; k < n; k++){
         prod += A[i*n+k] * B[k*n+j];
       }
-      printf("CPU: %f\n",prod);
-      printf("GPU: %f\n",prod);
-      // float relativeError = (prod - C[i*n+j])/prod;
-      // if (relativeError > relativeTolerance
-      //   || relativeError < -relativeTolerance) {
-      //   printf("TEST FAILED\n\n");
-      //   exit(0);
-      // }
+      float relativeError = (prod - C[i*n+j])/prod;
+      if (relativeError > relativeTolerance
+        || relativeError < -relativeTolerance) {
+        printf("TEST FAILED\n\n");
+        exit(0);
+      }
     }
   }
   printf("TEST PASSED\n\n");
