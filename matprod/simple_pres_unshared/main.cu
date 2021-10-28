@@ -99,7 +99,7 @@ int main(int argc, char**argv) {
     //INSERT CODE HERE
 
     dim3 num_threads(HILOS, HILOS);
-    dim3 num_blocks((n + HILOS - 1) / num_threads.x,(n + HILOS - 1) / num_threads.y);
+    dim3 num_blocks((int)((n + HILOS - 1) / num_threads.x),(int)((n + HILOS - 1) / num_threads.y));
 
     vecAddKernelUnshared<<<num_blocks, num_threads>>>(A_d, B_d, C_d, n);
 
