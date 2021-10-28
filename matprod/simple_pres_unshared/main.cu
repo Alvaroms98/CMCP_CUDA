@@ -7,13 +7,11 @@
  ******************************************************************************/
 
 #include <stdio.h>
-#include <cuda_runtime.h>
-#include <math.h>
 #include "support.h"
 #include "kernel.cu"
 
 
-#define HILOS 64
+#define HILOS 16
 
 
 int main(int argc, char**argv) {
@@ -40,7 +38,7 @@ int main(int argc, char**argv) {
     }
 
     int ld = n;
-    float* A_h = (float*) malloc( sizeof(float)*n*n );
+    float *A_h = (float*) malloc( sizeof(float)*n*n );
     for (unsigned int i=0; i < n; i++)
     {
         for (unsigned int j=0; j < n; j++)
@@ -49,7 +47,7 @@ int main(int argc, char**argv) {
         }
     }
 
-    float* B_h = (float*) malloc( sizeof(float)*n*n );
+    float *B_h = (float*) malloc( sizeof(float)*n*n );
     for (unsigned int i=0; i < n; i++)
     {
         for (unsigned int j=0; j < n; j++)
@@ -58,7 +56,7 @@ int main(int argc, char**argv) {
         }
     }
 
-    float* C_h = (float*) malloc( sizeof(float)*n*n );
+    float *C_h = (float*) malloc( sizeof(float)*n*n );
 
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
     printf("    Matrix size = %u * %u\n", n,n);
