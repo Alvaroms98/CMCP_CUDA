@@ -19,7 +19,7 @@ __global__ void vecAddKernelShared1(float* A, float* B, float* C, int n) {
     // fila entera de submatrices (desplazamiento vertical)
     int bBegin = BS * bx; // Desplazamiento horizontal entre submatrices
 
-    float Csub = 0; // Elemento que calcula cada hilo individualmente
+    float Csub = 0.0; // Elemento que calcula cada hilo individualmente
 
 
     /* Bucle para recorrer las submatrices de A de manera horizontal
@@ -54,6 +54,7 @@ __global__ void vecAddKernelShared1(float* A, float* B, float* C, int n) {
     int c = n * BS * by + BS * bx;//Primer termino desplazamiento vertical, 
     // Segundo término desplazamiento horizontal
 
-
-    C[c + n * ty + tx] = Csub;
+    if (c < n*n){
+        C[c + n * ty + tx] = Csub;
+    }
 }
