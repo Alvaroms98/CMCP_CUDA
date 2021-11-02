@@ -187,7 +187,7 @@ int MatrixMultiply(int argc, char **argv,
     checkCudaErrors(cudaEventRecord(start, stream));
 
     // Execute the kernel
-    int nIter = 300;
+    int nIter = 3;
 
     for (int j = 0; j < nIter; j++) {
         if (block_size == 16) {
