@@ -11,7 +11,7 @@
 #include "kernel.cu"
 
 
-#define HILOS 64
+#define HILOS 32
 
 
 int main(int argc, char**argv) {
