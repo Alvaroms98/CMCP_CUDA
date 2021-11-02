@@ -14,7 +14,7 @@
 
 void verify(float *A, float *B, float *C, int n) {
 
-  const float relativeTolerance = 1e-3;
+  const float relativeTolerance = 1e-6;
   float prod;
   for(int i = 0; i < n; i++) {
     for (int j=0; j < n; j++){
