@@ -100,7 +100,7 @@ main( int argc, char** argv)
                deviceProp.textureAlignment);
         printf("  Clock rate:                                    %.2f GHz\n",
                deviceProp.clockRate * 1e-6f);
-        printf("  Memory bus width:                              %lu bytes\n",
+        printf("  Memory bus width:                              %d  bytes\n",
                deviceProp.memoryBusWidth);
     #if CUDART_VERSION >= 2000
         printf("  Concurrent copy and execution:                 %s\n",
