@@ -56,7 +56,7 @@ __global__ void vecAddKernel(float* A, float* B, float* C, int n) {
     int c = n * BS * by + BS * bx;//Primer termino desplazamiento vertical, 
     // Segundo término desplazamiento horizontal
 
-    if (c < n*n){
+    if ((c + n * ty + tx) < (n*n)){
         C[c + n * ty + tx] = Csub;
     }
 }
