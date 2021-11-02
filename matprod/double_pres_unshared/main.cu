@@ -38,7 +38,7 @@ int main(int argc, char**argv) {
     }
 
     int ld = n;
-    float *A_h = (float*) malloc( sizeof(float)*n*n );
+    double *A_h = (double*) malloc( sizeof(double)*n*n );
     for (unsigned int i=0; i < n; i++)
     {
         for (unsigned int j=0; j < n; j++)
@@ -47,7 +47,7 @@ int main(int argc, char**argv) {
         }
     }
 
-    float *B_h = (float*) malloc( sizeof(float)*n*n );
+    double *B_h = (double*) malloc( sizeof(double)*n*n );
     for (unsigned int i=0; i < n; i++)
     {
         for (unsigned int j=0; j < n; j++)
@@ -56,7 +56,7 @@ int main(int argc, char**argv) {
         }
     }
 
-    float *C_h = (float*) malloc( sizeof(float)*n*n );
+    double *C_h = (double*) malloc( sizeof(double)*n*n );
 
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
     printf("    Matrix size = %u * %u\n", n,n);
@@ -68,10 +68,10 @@ int main(int argc, char**argv) {
 
     //INSERT CODE HERE
 
-    float *A_d, *B_d, *C_d;
-    cudaMalloc( (void **) &A_d, sizeof(float)*n*n);
-    cudaMalloc( (void **) &B_d, sizeof(float)*n*n);
-    cudaMalloc( (void **) &C_d, sizeof(float)*n*n);
+    double *A_d, *B_d, *C_d;
+    cudaMalloc( (void **) &A_d, sizeof(double)*n*n);
+    cudaMalloc( (void **) &B_d, sizeof(double)*n*n);
+    cudaMalloc( (void **) &C_d, sizeof(double)*n*n);
 
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
@@ -83,8 +83,8 @@ int main(int argc, char**argv) {
 
     //INSERT CODE HERE
 
-    cudaMemcpy(A_d, A_h, sizeof(float)*n*n, cudaMemcpyHostToDevice);
-    cudaMemcpy(B_d, B_h, sizeof(float)*n*n, cudaMemcpyHostToDevice);
+    cudaMemcpy(A_d, A_h, sizeof(double)*n*n, cudaMemcpyHostToDevice);
+    cudaMemcpy(B_d, B_h, sizeof(double)*n*n, cudaMemcpyHostToDevice);
 
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
@@ -112,7 +112,7 @@ int main(int argc, char**argv) {
 
     //INSERT CODE HERE
 
-    cudaMemcpy(C_h, C_d, sizeof(float)*n*n, cudaMemcpyDeviceToHost);
+    cudaMemcpy(C_h, C_d, sizeof(double)*n*n, cudaMemcpyDeviceToHost);
     cudaDeviceSynchronize();
     stopTime(&timer); printf("%f s\n", elapsedTime(timer));
 
