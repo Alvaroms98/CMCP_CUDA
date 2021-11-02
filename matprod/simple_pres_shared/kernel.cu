@@ -8,7 +8,7 @@
 
 #define HILOS 16
 
-__global__ void vecAddKernelShared1(float* A, float* B, float* C, int n) {
+__global__ void vecAddKernel(float* A, float* B, float* C, int n) {
 
     /* Definir identificadores */
     int bx = blockIdx.x, by = blockIdx.y;
