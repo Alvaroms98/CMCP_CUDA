@@ -22,6 +22,7 @@ void verify(float *A, float *B, float *C, int n) {
       for (int k=0; k < n; k++){
         prod += A[i*n+k] * B[k*n+j];
       }
+      printf("CPU: %f\nGPU: %f\n", prod,C[i*n+j]);
       float relativeError = (prod - C[i*n+j])/prod;
       if (relativeError > relativeTolerance
         || relativeError < -relativeTolerance) {
