@@ -158,8 +158,8 @@ void initializeCUDA(int argc, char **argv, int &devID, int &iSizeMultiple, sMatr
         iSizeMultiple = getCmdLineArgumentInt(argc, (const char **)argv, "tam");
     }
 
-    iSizeMultiple = min(iSizeMultiple, 10);
-    iSizeMultiple = max(iSizeMultiple, 1);
+    //iSizeMultiple = min(iSizeMultiple, 10);
+    //iSizeMultiple = max(iSizeMultiple, 1);
 
     cudaDeviceProp deviceProp;
 
